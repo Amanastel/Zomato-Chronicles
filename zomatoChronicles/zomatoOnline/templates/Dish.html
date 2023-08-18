@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <nav class="navbar p-2 bg-danger shadow-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand">Navbar</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <a href="/logout/" class="btn btn-outline-success" type="submit">Logout</a>
+      </form>
+    </div>
+  </nav>
+  <body>
+    <div class="container mt-5">
+      <h1>Hello, {{request.user.first_name}} </h1>
+      <form
+        class="col-6 mx-auto card p-3 shadow-lg"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %}
+        <h2>Add Dish</h2>
+        <hr />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Dish name</label
+          >
+          <input
+            name="dish_name"
+            required
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Dish Discription</label
+          >
+          <textarea name="dish_dis" required class="form-control">
+          </textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Dish Price</label
+          >
+          <input name="price"  type="number" required class="form-control"/>
+          
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Dish Image</label
+          >
+          <input name="dish_image" type="file" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Add Dish</button>
+      </form>
+
+      <div class="mt-5">
+        <div class="mx-auto col-6">
+          <form>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >search Food</label
+              >
+              <input name="search" type="text" class="form-control" />
+            </div>
+            <button type="submit" class="btn btn-primary">search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container mt-5 col-auto mx-auto card p-3 shadow-lg">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Dish Name</th>
+            <th scope="col">Dish Discription</th>
+            <th scope="col">Dish Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for receipce in receipces %}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{receipce.receipe_name}}</td>
+            <td>{{receipce.receipe_dis}}</td>
+            <td>
+              <img
+                src="/media/{{receipce.receipe_image}}"
+                style="height: 150px"
+              />
+            </td>
+
+            <td>
+              <a
+                href="/delete-receipe/{{receipce.id}}/"
+                class="btn btn-danger m-2"
+                >Delete Dish</a
+              >
+              <a
+                href="/update-receipe/{{receipce.id}}/"
+                class="btn btn-success m-2"
+                >Update Dish</a
+              >
+            </td>
+          </tr>
+
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
