@@ -95,14 +95,15 @@
           </tr>
         </thead>
         <tbody>
-          {% for receipce in receipces %}
+          {% for receipce in dish %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
-            <td>{{receipce.receipe_name}}</td>
-            <td>{{receipce.receipe_dis}}</td>
+            <td>{{receipce.dish_name}}</td>
+            <td>{{receipce.dish_dis}}</td>
+            <td>{{receipce.price}}</td>
             <td>
               <img
-                src="/media/{{receipce.receipe_image}}"
+                src="/media/{{receipce.dish_image}}"
                 style="height: 150px"
               />
             </td>
