@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Dish
+from django.http import HttpResponse
 
 
 @login_required(login_url="/login/")
@@ -125,3 +126,52 @@ def addDish(request):
         
     return render(request, 'dish.html', context)
 
+
+@login_required(login_url="/login/")
+def update_availability(request, dish_id):
+    try:
+        dish = Dish.objects.get(pk=dish_id)
+    except Dish.DoesNotExist:
+        return HttpResponse("Dish not found", status=404)
+    
+    print("Before availability toggle:", dish.availability)
+    
+    dish.availability = not dish.availability
+    dish.save()
+    
+    print("After availability toggle:", dish.availability)
+    
+    return redirect("/dish/")
+
+
+@login_required(login_url="/login/")
+def update_dish(request, id):
+    queryset = Dish.objects.get(id=id)
+    
+    if request.method == "POST":
+        data = request.POST
+        dish_name = data.get("dish_name")
+        dish_dis = data.get("dish_dis")
+        dish_image = request.FILES.get('dish_image')
+        
+        queryset.dish_name = dish_name
+        queryset.dish_dis = dish_dis
+        
+        if dish_image:
+            queryset.dish_image = dish_image
+            
+        queryset.save()
+        return redirect("/dish/")
+     
+    context = {'dish': queryset}
+     
+    return render(request, 'update_dish.html', context)
+
+
+
+
+
+def delete_dish(request, id):
+    queryset = Dish.objects.get(id = id)
+    queryset.delete()
+    return redirect("/dish/")

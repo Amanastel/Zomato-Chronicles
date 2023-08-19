@@ -13,9 +13,9 @@
   </head>
   <nav class="navbar p-2 bg-danger shadow-lg">
     <div class="container-fluid">
-      <a class="navbar-brand">Navbar</a>
+      <a class="navbar-brand">Dish</a>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
         <a href="/logout/" class="btn btn-outline-success" type="submit">Logout</a>
       </form>
     </div>
@@ -92,6 +92,7 @@
             <th scope="col">Dish Price</th>
             <th scope="col">Image</th>
             <th scope="col">Actions</th>
+            <th scope="col">Availability</th>
           </tr>
         </thead>
         <tbody>
@@ -110,15 +111,27 @@
 
             <td>
               <a
-                href="/delete-receipe/{{receipce.id}}/"
+                href="{% url 'delete_dish' receipce.id %}"
                 class="btn btn-danger m-2"
                 >Delete Dish</a
               >
               <a
-                href="/update-receipe/{{receipce.id}}/"
+                {% comment %} href="/update_dish/{{receipce.id}}/" {% endcomment %}
+                {% comment %} href="{% url 'update_dish' receipce.id %}" {% endcomment %}
+                href="/update-dish/{{receipce.id}}/"
                 class="btn btn-success m-2"
                 >Update Dish</a
               >
+            </td>
+            <td>
+              <form method="post" action="{% url 'update_availability' receipce.id %}">
+                {% csrf_token %}
+                {% if receipce.dish.availability %}
+                  <button type="submit" class="btn btn-success m-2">Available</button>
+                {% else %}
+                  <button type="submit" class="btn btn-danger m-2">Unavailable</button>
+                {% endif %}
+              </form>
             </td>
           </tr>
 
