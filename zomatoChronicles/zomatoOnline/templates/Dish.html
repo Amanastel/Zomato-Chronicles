@@ -116,9 +116,8 @@
                 >Delete Dish</a
               >
               <a
-                {% comment %} href="/update_dish/{{receipce.id}}/" {% endcomment %}
-                {% comment %} href="{% url 'update_dish' receipce.id %}" {% endcomment %}
-                href="/update-dish/{{receipce.id}}/"
+                {% comment %} href="/update-dish/{{receipce.id}}/" {% endcomment %}
+                href="{% url 'update_dish' receipce.id %}"
                 class="btn btn-success m-2"
                 >Update Dish</a
               >
@@ -126,7 +125,7 @@
             <td>
               <form method="post" action="{% url 'update_availability' receipce.id %}">
                 {% csrf_token %}
-                {% if receipce.dish.availability %}
+                {% if receipce.availability %}
                   <button type="submit" class="btn btn-success m-2">Available</button>
                 {% else %}
                   <button type="submit" class="btn btn-danger m-2">Unavailable</button>

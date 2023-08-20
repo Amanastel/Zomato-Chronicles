@@ -28,9 +28,8 @@ urlpatterns = [
     path('logout/', views.logout_page, name='logout'),
     path('home/', home, name='home'),
     path('dish/', addDish, name='dish'),
-    path('update-dish/<int:dish_id>/', views.update_availability, name='update_availability'),
-    # path('update-dish/<int:dish_id>/', views.update_dish, name='update_dish'),
-    path('update-dish/<id>/', update_dish, name='update_receipe'),
+    path('update_availability/<int:dish_id>/', views.update_availability, name='update_availability'),
+    path('update_dish/<int:dish_id>/', views.update_dish, name='update_dish'),
     path('delete-dish/<int:id>/', views.delete_dish, name='delete_dish')
     
     

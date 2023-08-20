@@ -8,6 +8,22 @@ class DishForm(forms.ModelForm):
     class Meta:
         model = Dish
         fields = ['dish_name', 'price', 'availability', 'dish_dis', 'dish_image']
+        widgets = {
+            'dish_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'availability': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
+            'dish_dis': forms.Textarea(attrs={'class': 'form-control'}),
+            'dish_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+        }
+        labels = {
+            'dish_name': 'Item Name',
+            'price': 'Price',
+            'availability': 'Available',
+            'dish_dis': 'Description',
+            'dish_image': 'Image',
+        }
+        
+        
         
         
 class MenuForm(forms.ModelForm):

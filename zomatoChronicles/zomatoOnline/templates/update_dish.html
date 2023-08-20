@@ -8,9 +8,10 @@
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container mt-5">
+    {% comment %} <div class="container mt-5">
         <form class="col-6 mx-auto card p-3 shadow-lg" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
+            {{ form.as_p }}
             <h2>Update Dish</h2>
             <hr>
             <div class="mb-3">
@@ -31,6 +32,19 @@
             </div>
             <button type="submit" class="btn btn-success">Update Dish</button>
         </form>
+    </div> {% endcomment %}
+
+
+
+    <div class="container mt-5">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="mb-4">Update Dish Item</h1>
+            <form method="POST" enctype="multipart/form-data" class="border rounded p-3 shadow">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-danger">Update Dish Item</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
