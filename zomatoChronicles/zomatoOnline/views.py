@@ -10,13 +10,14 @@ from django.http import HttpResponse
 
 @login_required(login_url="/login/")
 def home(request):
+    available_dishes = Dish.objects.filter(availability=True)
     data = Dish.objects.all()
     if request.user.is_authenticated:
         print("User is authenticated")
     else:
         print("User is not authenticated")
     context = {
-        'home': data
+        'home': available_dishes
     }
     return render(request, 'index.html',context)
 

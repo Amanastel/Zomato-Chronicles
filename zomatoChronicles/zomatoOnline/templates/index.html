@@ -230,12 +230,7 @@
                 <div class="about__data">
                     <span class="section-subtitle about__initial">About us</span>
                     <h2 class="section-title about__initial">We cook the best <br> tasty food</h2>
-                    <p class="about__description">Common accompaniments to rice and curry include sambol (a Sri Lankan
-                        relish),
-                        a gravy or hodda with spices and coconut milk,
-                        mallum (chopped leaves with coconut), and fried crispy foods such as papadams. This specialty is
-                        a typical home-cooked
-                        dish and an undisputed staple on restaurant menus throughout Sri Lanka.</p>
+                    <p class="about__description">Common accompaniments to rice and curry include sambol (an Indian relish), a gravy or hodda with spices and coconut milk, mallum (chopped leaves with coconut), and fried crispy foods such as papadams. This specialty is a typical home-cooked dish and an undisputed staple on restaurant menus throughout India.</p>
                     <a href="#" class="button">Explore history</a>
                 </div>
                
@@ -315,7 +310,7 @@
                     </svg>
                     <h3 class="services__title">Excellent food</h3>
                     <p class="services__description">We offer our clients excellent quality services for many years,
-                        with the best and delicious food in Sri Lanka.</p>
+                        with the best and delicious food in Zomato Chronicles.</p>
                 </div>
 
                 <div class="services__content">
@@ -476,7 +471,7 @@
                     </svg>
                     <h3 class="services__title">Fast food</h3>
                     <p class="services__description">We offer our clients excellent quality services for many years,
-                        with the best and delicious food in Sri Lanka.</p>
+                        with the best and delicious food in Zomato Chronicles.</p>
                 </div>
 
                 <div class="services__content">
@@ -534,45 +529,28 @@
                     </svg>
                     <h3 class="services__title">Delivery</h3>
                     <p class="services__description">We offer our clients excellent quality services for many years,
-                        with the best and delicious food in Sri Lanka.</p>
+                        with the best and delicious food in Zomato Chronicles.</p>
                 </div>
             </div>
         </section>
 
-
-        <!--========== MENU ==========-->
         <section class="menu section bd-container" id="menu">
-            <span class="section-subtitle">Special</span>
-            <h2 class="section-title">Menu of the week</h2>
+          <span class="section-subtitle">Special</span>
+          <h2 class="section-title">Menu of the week</h2>
+      
+          <div class="menu__container bd-grid">
+              {% for dish in home %}
+              <div class="menu__content">
+                  <img src="{{ dish.dish_image }}" alt="{{ dish.dish_name }}" class="menu__img">
+                  <h3 class="menu__name">{{ dish.dish_name }}</h3>
+                  <span class="menu__detail">{{ dish.dish_dis }}</span>
+                  <span class="menu__preci">Rs.{{ dish.price }}</span>
+                  <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
+              </div>
+              {% endfor %}
+          </div>
+      </section>
 
-            <div class="menu__container bd-grid">
-                <div class="menu__content">
-                  
-                    <img src="{% static 'img/Breakfast.png' %}" alt="" class="menu__img">
-                    <h3 class="menu__name">breakfast</h3>
-                    <span class="menu__detail">Sri Lankan Egg Hoppers</span>
-                    <span class="menu__preci">Rs.250.00</span>
-                    <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-                </div>
-
-                <div class="menu__content">
-                  
-                    <img src="{% static 'img/lunch.png' %}" alt="" class="menu__img">
-                    <h3 class="menu__name">lunch</h3>
-                    <span class="menu__detail">sri lankan rice and curry</span>
-                    <span class="menu__preci">Rs.350.00</span>
-                    <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-                </div>
-
-                <div class="menu__content">
-                    <img src="{% static 'img/dinner.png' %}" alt="" class="menu__img">
-                    <h3 class="menu__name">Dinner</h3>
-                    <span class="menu__detail">string hoppers</span>
-                    <span class="menu__preci">Rs.350.50</span>
-                    <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
-                </div>
-            </div>
-        </section>
 
         <!--========== CONTACT US ==========-->
         <section class="contact section bd-container" id="contact">
@@ -596,7 +574,7 @@
     <footer class="footer section bd-container">
         <div class="footer__container bd-grid">
             <div class="footer__content">
-                <a href="#" class="footer__logo">SL Foods Restaurant</a>
+                <a href="#" class="footer__logo">Zomato Chronicles</a>
                 <span class="footer__description">Restaurant</span>
                 <div>
                     <a href="#" class="footer__social"><i class='bx bxl-facebook'></i></a>
@@ -636,7 +614,7 @@
             </div>
         </div>
 
-        <p class="footer__copy">&#169; @Sajith Dilshan .All right reserved</p>
+        <p class="footer__copy">&#169; @Aman Kumar .All right reserved</p>
     </footer>
 
 
