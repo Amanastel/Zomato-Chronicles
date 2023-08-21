@@ -6,3 +6,4 @@ from .models import Dish, Menu, Order
 admin.site.register(Dish)
 admin.site.register(Menu)
 admin.site.register(Order)
+

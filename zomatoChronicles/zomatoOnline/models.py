@@ -9,7 +9,8 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     availability = models.BooleanField(default=True)
     dish_dis = models.TextField()
-    dish_image = models.ImageField(upload_to='dish_pic')
+    # dish_image = models.ImageField(upload_to='dish_pic')
+    dish_image = models.URLField()
     def __str__(self):
         return self.dish_name
 

@@ -21,6 +21,16 @@ def home(request):
     return render(request, 'index.html',context)
 
 
+def home1(request):
+    data = Dish.objects.all()
+    if request.user.is_authenticated:
+        print("User is authenticated")
+    else:
+        print("User is not authenticated")
+    context = {
+        'home1': data
+    }
+    return render(request, 'home.html',context)
 
 
 def register(request):
@@ -104,7 +114,7 @@ def addDish(request):
         dish_dis = data.get("dish_dis")
         price = data.get("price")
         availability = True
-        dish_image = request.FILES.get('dish_image')
+        dish_image = data.get('dish_image')
         
         
         Dish.objects.create(

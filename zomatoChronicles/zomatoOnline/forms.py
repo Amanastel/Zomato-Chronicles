@@ -13,7 +13,9 @@ class DishForm(forms.ModelForm):
             'price': forms.NumberInput(attrs={'class': 'form-control'}),
             'availability': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
             'dish_dis': forms.Textarea(attrs={'class': 'form-control'}),
-            'dish_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            # 'dish_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),
+            'dish_image': forms.URLInput(attrs={'class': 'form-control'}),
+            
         }
         labels = {
             'dish_name': 'Item Name',
