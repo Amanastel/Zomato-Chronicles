@@ -1,0 +1,44 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Items</title>
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+<div class='container'>
+    <div class='window'>
+      <div class='order-info'>
+        <div class='order-info-content'>
+            <h1>Your Cart</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Dish Name</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for item in cart_items %}
+                <tr>
+                  <td>{{ item.dish.dish_name }}</td>
+                  <td>{{ item.quantity }}</td>
+                  <td>Rs.{{ item.dish.price }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <p>Total Price: Rs.{{ total_price }}</p>
+            <a href="{% url 'place_order' %}" class="button">Place Order</a>
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html> 

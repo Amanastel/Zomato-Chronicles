@@ -157,32 +157,14 @@
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
-
-    {% comment %} <link rel="stylesheet" href="static/css/styles.css"> {% endcomment %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-
-
-    {% comment %} <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-    crossorigin="anonymous"
-  /> {% endcomment %}
-
-
 
     <title>Responsive restaurant website</title>
 </head>
-
 <body>
-
     <a href="#" class="scrolltop" id="scroll-top">
         <i class='bx bx-chevron-up scrolltop__icon'></i>
     </a>
-
-
-
-
     <header class="l-header" id="header">
         <nav class="nav bd-container">
             <a href="#" class="nav__logo">Zomato Chronicles Restaurant </a>
@@ -545,7 +527,10 @@
                   <h3 class="menu__name">{{ dish.dish_name }}</h3>
                   <span class="menu__detail">{{ dish.dish_dis }}</span>
                   <span class="menu__preci">Rs.{{ dish.price }}</span>
-                  <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
+                  <form method="post" action="{% url 'add_to_cart' dish.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button menu__button"><i class='bx bx-cart-alt'></i></button>
+                </form>
               </div>
               {% endfor %}
           </div>

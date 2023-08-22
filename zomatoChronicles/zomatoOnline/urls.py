@@ -30,10 +30,19 @@ urlpatterns = [
     path('dish/', addDish, name='dish'),
     path('update_availability/<int:dish_id>/', views.update_availability, name='update_availability'),
     path('update_dish/<int:dish_id>/', views.update_dish, name='update_dish'),
-    path('delete-dish/<int:id>/', views.delete_dish, name='delete_dish')
+    path('delete-dish/<int:id>/', views.delete_dish, name='delete_dish'),
+    # path('order/<int:dish_id>/', views.order_dish, name='order_dish'),
+    # path('add_to_cart/<int:dish_id>/', views.add_to_cart, name='add_to_cart'),
+    path('view-cart/', views.view_cart, name='view_cart'),
+    path('register/', views.register, name='register'),
+    # path('order/', views.order_dish, name='order_dish'),
     
     
     
+    path('add_to_cart/<int:dish_id>/', views.add_to_cart, name='add_to_cart'),
+    path('view_cart/', views.view_cart, name='view_cart'),
+    path('place_order/', views.place_order, name='place_order'),
+    path('order_history/', views.order_history, name='order_history'),
     
 ]
 

@@ -15,6 +15,7 @@ class Dish(models.Model):
         return self.dish_name
 
 class Menu(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     dish = models.OneToOneField(Dish, on_delete=models.CASCADE, primary_key=True)
     quantity = models.PositiveIntegerField(default=0)
     
@@ -23,14 +24,16 @@ class Menu(models.Model):
 
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    dishes = models.ManyToManyField(Dish)
+    dishes = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField()
+    total_price = models.DecimalField(max_digits=10, decimal_places=2)
     status_choices = (
         ('received', 'Received'),
         ('preparing', 'Preparing'),
         ('ready', 'Ready for Pickup'),
         ('delivered', 'Delivered')
     )
-    status = models.CharField(max_length=20, choices=status_choices, default='received')
+    status = models.CharField(max_length=20, choices=status_choices, default='pending')
     
     def __str__(self):
-        return f"Order for {self.user.username} - Status: {self.get_status_display()}"
+        return f"Order for {self.user.username} - {self.dishes.dish_name} - {self.status}"

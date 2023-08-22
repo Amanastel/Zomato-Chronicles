@@ -37,4 +37,10 @@ class MenuForm(forms.ModelForm):
 class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
-        fields = ['dishes', 'status']
+        fields = ['quantity']
+        widgets = {
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
+        }
+        labels = {
+            'quantity': 'Quantity',
+        }

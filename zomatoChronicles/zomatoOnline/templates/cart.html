@@ -1,0 +1,180 @@
+{% load static %}
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Dish</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.dish.dish_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs.{{ item.dish.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'home' %}">Continue Shopping</a>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Items</title>
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+<div class='container'>
+    <div class='window'>
+      <div class='order-info'>
+        <div class='order-info-content'>
+          <h2>Cart Items</h2>
+          <div class='line'></div>
+            <form method="post">
+                {% csrf_token %}
+                <table class='order-table'>
+                    <tbody>
+                        {% for item in cart_items %}
+                        <tr>
+                            <td><img src='{{ item.dish.dish_image }}' class='full-width'></img></td>
+                            <td>
+                                <br> <span class='thin'>{{ item.dish.dish_name }}</span>
+                                <br> {{ item.dish.dish_dis }}<br>
+                                <span class='thin small'>
+                                    Quantity:
+                                    <input type="number" name="quantity_{{ item.dish.id }}" value="{{ item.quantity }}" min="1">
+                                    <br>
+                                    Price: Rs.{{ item.dish.price }}<br>
+                                    <br><br>
+                                </span>
+                            </td>
+                            <td>
+                                <button type="submit" name="update" value="{{ item.dish.id }}">Update</button>
+                                <button type="submit" name="remove" value="{{ item.dish.id }}">Remove</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+         
+        </div>
+      </div>
+      <div class='credit-info'>
+        <div class='credit-info-content'>
+          <table class='half-input-table'>
+            <tr>
+              <td>Please select your card: </td>
+              <td>
+                <div class='dropdown' id='card-dropdown'>
+                  <div class='dropdown-btn' id='current-card'>Visa</div>
+                  <div class='dropdown-select'>
+                    <ul>
+                      <li>Master Card</li>
+                      <li>American Express</li>
+                    </ul>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80'
+            class='credit-card-image' id='credit-card-image'></img>
+          Card Number
+          <input class='input-field'></input>
+          Card Holder
+          <input class='input-field'></input>
+          <table class='half-input-table'>
+            <tr>
+              <td> Expires
+                <input class='input-field'></input>
+              </td>
+              <td>CVC
+                <input class='input-field'></input>
+              </td>
+            </tr>
+          </table>
+          <button class='pay-btn'>Checkout</button>
+
+        </div>
+
+      </div>
+     
+    </div>
+</div>
+</body>
+</html> {% endcomment %}
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart Items</title>
+  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+</head>
+<body>
+<div class='container'>
+    <div class='window'>
+      <div class='order-info'>
+        <div class='order-info-content'>
+          <h2>Cart Items</h2>
+          <div class='line'></div>
+          <h1>Your Cart</h1>
+          <table>
+            <thead>
+              <tr>
+                <th>Dish Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in cart_items %}
+              <tr>
+                <td>{{ item.dish.dish_name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>Rs.{{ item.dish.price }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <p>Total Price: Rs.{{ total_price }}</p>
+          <a href="{% url 'place_order' %}" class="button">Place Order</a>
+          
+        </div>
+      </div>
+    </div>
+</div>
+</body>
+</html> 

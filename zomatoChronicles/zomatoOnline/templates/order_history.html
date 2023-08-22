@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Order History</title>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="window">
+        <div class="order-info">
+          <div class="order-info-content">
+            <h1>Your Order History</h1>
+            <table>
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Dish Name</th>
+                  <th>Quantity</th>
+                  <th>Total Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for order in orders %}
+                <tr>
+                  <td>{{ order.id }}</td>
+                  <td>{{ order.dishes.dish_name }}</td>
+                  <td>{{ order.quantity }}</td>
+                  <td>Rs.{{ order.total_price }}</td>
+                  <td>{{ order.status }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
