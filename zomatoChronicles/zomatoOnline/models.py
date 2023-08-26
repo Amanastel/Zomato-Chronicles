@@ -37,3 +37,12 @@ class Order(models.Model):
     
     def __str__(self):
         return f"Order for {self.user.username} - {self.dishes.dish_name} - {self.status}"
+    
+    
+class Cart(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return f"{self.user.username}'s cart - {self.dish.dish_name}"

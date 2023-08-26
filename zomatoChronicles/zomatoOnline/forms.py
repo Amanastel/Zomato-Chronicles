@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import Dish, Menu, Order
+from .models import Dish, Menu, Order, Cart
 
 
 
@@ -44,3 +44,20 @@ class OrderForm(forms.ModelForm):
         labels = {
             'quantity': 'Quantity',
         }
+        
+        
+class CartForm(forms.ModelForm):
+    class Meta:
+        model = Cart
+        fields = ['quantity']
+        widgets = {
+            'quantity': forms.NumberInput(attrs={'class': 'form-control', 'min': 1}),
+        }
+        labels = {
+            'quantity': 'Quantity',
+        }
+        
+class UpdateCartItemForm(forms.ModelForm):
+    class Meta:
+        model = Cart
+        fields = ['quantity']

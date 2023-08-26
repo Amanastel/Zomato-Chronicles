@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update Dish</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    {% comment %}
+    <div class="container mt-5">
+      <form
+        class="col-6 mx-auto card p-3 shadow-lg"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        {% csrf_token %} {{ form.as_p }}
+        <h2>Update Dish</h2>
+        <hr />
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Dish name</label>
+          <input
+            name="dish_name"
+            value="{{dish.dish_name}}"
+            required
+            type="text"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Dish price</label>
+          <input
+            name="price"
+            value="{{dish.price}}"
+            required
+            type="number"
+            class="form-control"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Dish Discription</label
+          >
+          <textarea name="dish_dis" required class="form-control">
+{{dish.dish_dis}}</textarea
+          >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label"
+            >Dish Image</label
+          >
+          <input name="dish_image" type="file" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-success">Update Dish</button>
+      </form>
+    </div>
+    {% endcomment %}
+
+    <div class="container mt-5">
+      <div class="col-md-6 offset-md-3">
+        <h2>Update Cart Item</h2>
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit">Update</button>
+        </form>
+        <p><a href="{% url 'view_cart' %}">Back to Cart</a></p>
+      </div>
+    </div>
+  </body>
+</html>

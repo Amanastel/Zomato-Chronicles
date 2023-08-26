@@ -13,28 +13,32 @@
       <div class="window">
         <div class="order-info">
           <div class="order-info-content">
-            <h1>Your Order History</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th>Order ID</th>
-                  <th>Dish Name</th>
-                  <th>Quantity</th>
-                  <th>Total Price</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for order in orders %}
-                <tr>
-                  <td>{{ order.id }}</td>
-                  <td>{{ order.dishes.dish_name }}</td>
-                  <td>{{ order.quantity }}</td>
-                  <td>Rs.{{ order.total_price }}</td>
-                  <td>{{ order.status }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
+            <h2>Order History</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Dishes</th>
+                        <th>Quantity</th>
+                        <th>Total Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>
+                            {% for dish in order.dishes.all %}
+                                {{ dish.dish_name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                        <td>{{ order.quantity }}</td>
+                        <td>Rs.{{ order.total_price }}</td>
+                        <td>{{ order.get_status_display }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
           </div>
         </div>

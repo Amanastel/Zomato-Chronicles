@@ -141,38 +141,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart Items</title>
-  <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+  {% comment %} <link rel="stylesheet" href="{% static 'css/cart.css' %}"> {% endcomment %}
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
 </head>
 <body>
 <div class='container'>
-    <div class='window'>
-      <div class='order-info'>
-        <div class='order-info-content'>
+    <div class='window container mt-5 col-auto mx-auto card p-3 shadow-lg'>
+      {% comment %} <div class='order-info '> {% endcomment %}
+        <div class=''>
           <h2>Cart Items</h2>
-          <div class='line'></div>
           <h1>Your Cart</h1>
-          <table>
+          <table table mt-3>
             <thead>
-              <tr>
-                <th>Dish Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-              </tr>
+                <tr>
+                    <th scope="col">Dish Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th> <!-- New column for total price -->
+                    <th scope="col">Actions</th>
+                </tr>
             </thead>
             <tbody>
               {% for item in cart_items %}
-              <tr>
-                <td>{{ item.dish.dish_name }}</td>
-                <td>{{ item.quantity }}</td>
-                <td>Rs.{{ item.dish.price }}</td>
-              </tr>
+              <tr scope="row">
+                  <td>{{ item.dish.dish_name }}</td>
+                  <td>Rs.{{ item.quantity }}</td>
+                  <td>Rs.{{ item.dish.price }}</td>
+                  {% comment %} <td>Rs.{{ item.dish.price * item.quantity }}</td> {% endcomment %}
+                  <td>Rs.{{ item.total }}</td>
+                  <td>
+                    {% comment %} <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="item_id" value="{{ item.id }}">
+                        <input type="number" name="quantity" value="{{ item.quantity }}" min="1"> {% endcomment %}
+                        <a
+                          href="{% url 'update_cart_item' item.id %}"
+                          class="btn btn-success m-2"
+                          >Update Dish</a
+                        >
+                    {% comment %} </form> {% endcomment %}
+                
+                </tr>
+              
               {% endfor %}
-            </tbody>
-          </table>
-          <p>Total Price: Rs.{{ total_price }}</p>
-          <a href="{% url 'place_order' %}" class="button">Place Order</a>
+              <tr>
+                  <td colspan="3" align="right">Total Price:</td>
+                  <td>Rs.{{ total_price }}</td>
+              </tr>
+
+            </td>
+              <tr>
+                <td colspan="3" align="right">Total Price:</td>
+                <td>Rs.{{ total_price }}</td>
+            </tr>
+            <tr>
+                <td colspan="5" align="right">
+                    <a href="{% url 'place_order' %}" class="btn btn-primary">Place Order</a>
+                </td>
+            </tr>
+          </tbody>
           
-        </div>
+        {% comment %} </div> {% endcomment %}
       </div>
     </div>
 </div>

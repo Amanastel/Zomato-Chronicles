@@ -15,27 +15,16 @@
     <div class='window'>
       <div class='order-info'>
         <div class='order-info-content'>
-            <h1>Your Cart</h1>
-            <table>
-              <thead>
-                <tr>
-                  <th>Dish Name</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for item in cart_items %}
-                <tr>
-                  <td>{{ item.dish.dish_name }}</td>
-                  <td>{{ item.quantity }}</td>
-                  <td>Rs.{{ item.dish.price }}</td>
-                </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-            <p>Total Price: Rs.{{ total_price }}</p>
-            <a href="{% url 'place_order' %}" class="button">Place Order</a>
+          <h2>Confirm Order</h2>
+          <p>Total Price: Rs.{{ total_price }}</p>
+          <p>Click the "Confirm Order" button to place your order.</p>
+          <form method="post">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-primary">Confirm Order</button>
+          </form>
+            
+            {% comment %} <p>Total Price: Rs.{{ total_price }}</p>
+            <a href="{% url 'place_order' %}" class="button">Place Order</a> {% endcomment %}
         </div>
       </div>
     </div>
