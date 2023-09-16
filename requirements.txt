@@ -1,0 +1,7 @@
+django
+django-crispy-forms
+gunicorn
+Pillow
+psycopg2-binary
+python-decouple
+mysqlclient
