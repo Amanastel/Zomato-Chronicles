@@ -18,7 +18,7 @@ Before you begin, make sure you have the following installed:
 - Required Python packages from `requirements.txt`
 
 ## Screenshots
-*(Add screenshots of your application here)*
+
 
 ### Home Page
 ![Home Page](URL_TO_HOME_PAGE_SCREENSHOT)
