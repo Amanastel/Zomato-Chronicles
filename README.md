@@ -21,16 +21,16 @@ Before you begin, make sure you have the following installed:
 
 
 ### Home Page
-![Home Page](URL_TO_HOME_PAGE_SCREENSHOT)
+![Home Page](https://github.com/Amanastel/Zomato-django/blob/main/assest/img/Screenshot%202023-09-16%20at%2012.01.16%20PM.png?raw=true)
 
 ### Dish Management
-![Dish Management](URL_TO_DISH_MANAGEMENT_SCREENSHOT)
+![Dish Management](https://github.com/Amanastel/Zomato-django/blob/main/assest/img/Screenshot%202023-09-16%20at%2012.09.03%20PM.png?raw=true)
 
 ### Shopping Cart
-![Shopping Cart](URL_TO_SHOPPING_CART_SCREENSHOT)
+![Shopping Cart](https://github.com/Amanastel/Zomato-django/blob/main/assest/img/Screenshot%202023-09-16%20at%2012.01.58%20PM.png?raw=true)
 
-### Order History
-![Order History](URL_TO_ORDER_HISTORY_SCREENSHOT)
+### About US
+![About US](https://github.com/Amanastel/Zomato-django/blob/main/assest/img/Screenshot%202023-09-16%20at%2012.01.32%20PM.png?raw=true)
 
 ## Getting Started
 Follow these steps to install and run the project:
